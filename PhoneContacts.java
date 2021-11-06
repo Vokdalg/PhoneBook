@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class PhoneContacts {
-    private static HashMap<String, ArrayList> phoneBook = new HashMap();
+    private static final HashMap<String, ArrayList> PHONE_BOOK = new HashMap();
 
     public static List<Contact> getAllContacts() {
         return allContacts;
@@ -20,11 +20,11 @@ public class PhoneContacts {
     }
 
     protected static HashMap<String, ArrayList> getPhoneBook() {
-        return phoneBook;
+        return PHONE_BOOK;
     }
 
     protected static void addGroup(String groupName, ArrayList group) {
-        phoneBook.put(groupName, group);
+        PHONE_BOOK.put(groupName, group);
     }
 
     protected static void createGroup(Scanner scanner) {
