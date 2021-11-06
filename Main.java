@@ -35,7 +35,6 @@ public class Main {
                 }
             } catch (NumberFormatException exception) {
                 System.out.println("Необходимо ввести номер пункта меню.");
-//                continue;
             }
         }
     }
