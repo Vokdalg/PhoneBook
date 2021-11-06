@@ -15,6 +15,7 @@ public class PhoneContacts {
             System.out.println("Контакт с указанными данными уже создан!");
         } else {
             allContacts.add(Math.abs(position) - 1, contact);
+            System.out.println("Успешно создан контакт: " + contact);
         }
     }
 

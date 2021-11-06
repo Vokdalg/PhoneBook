@@ -17,8 +17,7 @@ public class Contact implements Comparable<Contact> {
             String contactNumber = Main.getTextValue(scanner, "Введите номер контакта или введите нет: ");
             if (!contactNumber.equals("нет")) {
                 Contact contact = new Contact(contactName, contactNumber);
-                System.out.println("Успешно создан контакт: " + contactName);
-                String inputGroupName = Main.getTextValue(scanner, "Для того, чтобы сохранить контакт, введите группы через пробел, куда вы хотите поместить контакт или введите нет: ");
+                String inputGroupName = Main.getTextValue(scanner, "Введите группы через пробел, куда вы хотите поместить контакт или введите нет: ");
                 if (!inputGroupName.equals("нет")) {
                     String[] groups = inputGroupName.split(" ");
                     for (String group : groups) {
