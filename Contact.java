@@ -1,13 +1,14 @@
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Contact {
+public class Contact implements Comparable<Contact> {
     private final String NAME;
     private final String PHONE_NUMBER;
 
     public Contact(String NAME, String PHONE_NUMBER) {
         this.NAME = NAME;
         this.PHONE_NUMBER = PHONE_NUMBER;
+        PhoneContacts.addContactToList(this);
     }
 
     protected static void createContact(Scanner scanner) {
@@ -53,5 +54,10 @@ public class Contact {
     @Override
     public int hashCode() {
         return Objects.hash(NAME, PHONE_NUMBER);
+    }
+
+    @Override
+    public int compareTo(Contact contact) {
+        return this.NAME.compareTo(contact.NAME);
     }
 }

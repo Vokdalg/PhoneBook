@@ -1,23 +1,32 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 public class PhoneContacts {
     private static HashMap<String, ArrayList> phoneBook = new HashMap();
+
+    public static List<Contact> getAllContacts() {
+        return allContacts;
+    }
+
+    private static List<Contact> allContacts = new ArrayList<>();
+
+    public static void addContactToList(Contact contact) {
+        int position = Collections.binarySearch(allContacts, contact);
+        if (position >= 0) {
+            System.out.println("Контакт с указанными данными уже создан!");
+        } else {
+            allContacts.add(Math.abs(position) - 1, contact);
+        }
+    }
 
     protected static HashMap<String, ArrayList> getPhoneBook() {
         return phoneBook;
     }
 
-    protected static void addGroup (String groupName, ArrayList group) {
+    protected static void addGroup(String groupName, ArrayList group) {
         phoneBook.put(groupName, group);
     }
 
-    protected static void addContactToGroup (Contact contact, ArrayList group) {
-        group.add(contact);
-    }
-
-    protected static void createGroup (Scanner scanner) {
+    protected static void createGroup(Scanner scanner) {
         while (true) {
             String groupName = Main.getTextValue(scanner, "Введите название новой группы (или введите нет): ");
             if (!groupName.equals("нет") && !PhoneContacts.getPhoneBook().containsKey(groupName)) {
@@ -37,22 +46,6 @@ public class PhoneContacts {
             System.out.println("Группа: " + groupName + "\n    Контакты: ");
             for (Object contact : getPhoneBook().get(groupName)) {
                 System.out.println("      " + contact);
-            }
-        }
-    }
-
-    public static void deleteGroup(Scanner scanner) {
-        while (true) {
-            System.out.println("ВНИМАНИЕ! Группа будет удалена, а контакты в ней безвозвратно потеряны!");
-            String groupName = Main.getTextValue(scanner, "Введите название группы, которую хотите удалить (или введите нет): ");
-            if (!groupName.equals("нет") && PhoneContacts.getPhoneBook().containsKey(groupName)) {
-                PhoneContacts.getPhoneBook().remove(groupName);
-                System.out.println("Успешно удалена группа: " + groupName);
-            } else if (!PhoneContacts.getPhoneBook().containsKey(groupName)) {
-                System.out.println("Группы с таким именем не существует!");
-                break;
-            } else {
-                break;
             }
         }
     }

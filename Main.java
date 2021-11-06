@@ -24,7 +24,9 @@ public class Main {
                         PhoneContacts.printPhoneBook();
                         break;
                     case 4:
-                        PhoneContacts.deleteGroup(scanner);
+                        for (Contact contact : PhoneContacts.getAllContacts()) {
+                            System.out.println(contact);
+                        }
                         break;
                     case 5:
                         break;
@@ -33,7 +35,7 @@ public class Main {
                 }
             } catch (NumberFormatException exception) {
                 System.out.println("Необходимо ввести номер пункта меню.");
-                continue;
+//                continue;
             }
         }
     }
